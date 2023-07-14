@@ -17,6 +17,8 @@ import java.util.*;
 import java.util.function.Function;
 import model.Customer;
 
+import javax.imageio.metadata.IIOInvalidTreeException;
+
 public class CompanyManagementIO {
 
     private static final String COMMA_DELIMITER = ",";
@@ -57,7 +59,7 @@ public class CompanyManagementIO {
                 String id = strLine.get(0);
                 String name = strLine.get(1);
                 String phone = strLine.get(2);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/M/yyyy");
                 formatter.withResolverStyle(ResolverStyle.STRICT);
                 LocalDate birthDay = LocalDate.parse(strLine.get(3), formatter);
                 Customer s = new Customer(id, name, phone, birthDay);
@@ -71,8 +73,10 @@ public class CompanyManagementIO {
         }
      catch (NoSuchElementException e) {
         System.out.println("Lỗi");
-
     }
+        catch (IllegalArgumentException e){
+            System.out.println("Lỗi");
+        }
 
         finally {
             try {
