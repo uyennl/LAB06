@@ -24,27 +24,25 @@ public class Company {
     private static final String READ_PATH = "\\src\\data\\customer.txt";
     private static final String WRITE_PATH = "\\src\\data\\customer1.txt";
 
-    public void config() {
+    public static void config() {
         try {
             cp.readFile(BASE_PATH + READ_PATH);
-
         } catch (ParseException e) {
             e.printStackTrace();
-
         }
     }
-    public static Calendar toCalendar(String str) {
-        Calendar c = Calendar.getInstance();
-        DateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-        Date d = null;
-        try {
-            d = f.parse(str);
-        } catch (ParseException ex) {
-            Logger.getLogger(CompanyManagementIO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        c.setTime(d);
-        return c;
-    }
+//    public static Calendar toCalendar(String str) {
+//        Calendar c = Calendar.getInstance();
+//        DateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+//        Date d = null;
+//        try {
+//            d = f.parse(str);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(CompanyManagementIO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        c.setTime(d);
+//        return c;
+//    }
 
     public boolean saveFile(){
 

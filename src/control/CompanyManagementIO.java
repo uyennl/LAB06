@@ -11,10 +11,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.util.*;
 import java.util.function.Function;
 import model.Customer;
 
@@ -59,14 +58,23 @@ public class CompanyManagementIO {
                 String name = strLine.get(1);
                 String phone = strLine.get(2);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                formatter.withResolverStyle(ResolverStyle.STRICT);
                 LocalDate birthDay = LocalDate.parse(strLine.get(3), formatter);
                 Customer s = new Customer(id, name, phone, birthDay);
                 Company.customerList.add(s);
-
             }
+
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
+        }catch (DateTimeParseException e){
+            System.out.println("Lỗi");
+        }
+     catch (NoSuchElementException e) {
+        System.out.println("Lỗi");
+
+    }
+
+        finally {
             try {
                 if (br != null) {
                     br.close();

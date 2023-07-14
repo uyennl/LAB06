@@ -53,7 +53,15 @@ public abstract class Menu {
 //    }
 public void run(){
     while(true){
-        int choice = getChoice();
+        display();
+        int choice = 0;
+        try {
+            choice = getChoice();
+
+        } catch (NumberFormatException e) {
+            System.out.println("Wrong, try to enter 1 to 7");
+            continue;//
+        }
         if(choice<=0 || choice> list.size()){
             System.out.println("You must choice from 1 to "+list.size());
             continue;

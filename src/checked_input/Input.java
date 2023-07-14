@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.util.*;
 import java.util.function.Predicate;
@@ -197,6 +198,10 @@ public class Input {
                 continue;
             } catch (NoSuchElementException e) {
                 System.out.println(ERR_MESSAGE);
+                continue;
+            }
+            catch (DateTimeParseException e){
+                e.printStackTrace();
                 continue;
             }
             return result;
