@@ -14,6 +14,7 @@ import java.util.function.Predicate;
 public class Input {
     private Input() {
     }
+
     ;
     static Scanner sc = new Scanner(System.in);
     private static final String ERR_MESSAGE = "Wrong Input ! Please Re-enter ";
@@ -199,14 +200,14 @@ public class Input {
             } catch (NoSuchElementException e) {
                 System.out.println(ERR_MESSAGE);
                 continue;
-            }
-            catch (DateTimeParseException e){
+            } catch (DateTimeParseException e) {
                 e.printStackTrace();
                 continue;
             }
             return result;
         }
     }
+
     public static long enterLong(String mess, boolean check) {
         long longVar;
         while (true) {

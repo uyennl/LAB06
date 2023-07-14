@@ -9,7 +9,7 @@ import model.Customer;
 import java.util.ArrayList;
 
 public class Management extends Menu {
-    Customer cus = new Customer();
+    //Customer cus = new Customer();
     CompanyManagement cm = new CompanyManagement();
     static Company c = new Company();
 
@@ -24,7 +24,7 @@ public class Management extends Menu {
                 cm.displayALL();
                 break;
             case 2:
-                Management menuSearch = new Management("Customer Searching\n--------------------", new String[]{"Find by customerID", "Find by Name", "Find by Phone", "Find by Birth", "Exit"}) {
+                Menu menuSearch = new Menu("Customer Searching\n--------------------", new String[]{"Find by customerID", "Find by Name", "Find by Phone", "Find by Birth", "Exit"}) {
                     @Override
                     public boolean execute(int choice) {
                         switch (choice) {
@@ -55,21 +55,21 @@ public class Management extends Menu {
                 cm.addCustomer();
                 break;
             case 4:
-                Management menuDelete = new Management("Customer Delete\n--------------------", new String[]{"Delete by cusomerID", "Find by Name", "Find by Phone", "Find by Birth", "Exit"}) {
+                Menu menuDelete = new Menu("Customer Delete\n--------------------", new String[]{"Delete by cusomerID", "Delete by Name", "Delete by Phone", "Delete by Birth", "Exit"}) {
                     @Override
                     public boolean execute(int choice) {
                         switch (choice) {
                             case 1:
-                                cm.displayById();
+                                cm.deleteId();
                                 break;
                             case 2:
-                                cm.displayByName();
+                                cm.deleteName();
                                 break;
                             case 3:
-                                cm.displayByPhone();
+                                cm.deletePhone();
                                 break;
                             case 4:
-                                cm.displayByBirth();
+                                cm.deleteBirth();
                                 break;
                             case 5:
                                 return true;
@@ -95,7 +95,7 @@ public class Management extends Menu {
                 if (update.isEmpty()) {
                     System.out.println("The Customer not exist");
                 } else {
-                    Management menuUpdate = new Management("Customer Update \n--------------------", new String[]{"Update Name", "Update Phone", "FUpdate Birth", "Exit"}) {
+                    Menu menuUpdate = new Menu("Customer Update \n--------------------", new String[]{"Update Name", "Update Phone", "FUpdate Birth", "Exit"}) {
                         @Override
                         public boolean execute(int choice) {
                             switch (choice) {

@@ -228,6 +228,41 @@ public void deleteId() {
 //        System.out.println("Detele Customer Success");
 //    }
 //}
+public void deleteBirth() {
+    String birth = Input.enterString("ID delete", Validator.REGEX_PHONE_NUMBER_SEARCH);
+    ArrayList<Customer> search = search((c) -> c.getPhone().startsWith(birth));
+    int count = 0;
+    int x = 0;
+    if (search.isEmpty()) {
+        System.out.println("The Customer does not exist");
+    } else {
+        System.out.println("Selected Customer(s):");
+        for (Customer customer : search) {
+            System.out.print(count+"." );
+            System.out.println(customer);
+        }
+        System.out.println("Mơi nhập Id muốn xóa từ 1->" + (count) );
+        x = Input.enterInt("Choose",true);
+        while(x<=search.size()){
+            System.out.println("Do you want to delete?");
+            String a = Input.enterString("(y/n)", Validator.REGEX_QUESTION);
+            if (a.equals("y")) {
+                Company.customerList.remove(search.get(x));
+
+//            search.forEach(p -> Company.customerList.remove(p));
+                System.out.println("Delete Customer Success");
+                // Hiển thị danh sách khách hàng còn lại
+                System.out.println("Remaining Customers:");
+                for (Customer customer : Company.customerList) {
+                    System.out.println(customer);
+                }
+            }
+            else {
+                break;
+            }
+        }
+    }}
+
 
 
 }
